@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" xmlns:th="httep://www.thymeleaf.com">
+			<meta name="viewport" content="width=device-width, initial-scale=1">
+				<title>bookstore</title>
+				<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+ 				<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  </head>
+				<body>
+					<nav class="navbar navbar-expand-lg bg-dark">
+						<div class="container-fluid">
+							<a class="navbar-brand text-white">Book Store</a>
+							<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+								<span class="navbar-toggler-icon"/>
+							</button>
+							<div class="collapse navbar-collapse" id="navbarSupportedContent">
+								<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+									<li class="nav-item">
+										<a class="nav-link active text-white" aria-current="page" href="/">Home</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link text-white" href="bk_available">Available Books</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link text-white" aria-disabled="true" href="bk_my">My Books</a>
+									</li>
+								</ul>
+								<div>
+									<a class="nav-link text-white" aria-disabled="true" href="bk_register">New Book Register</a>
+								</div>
+							</div>
+						</div>
+					</nav>
+					<div class="container my-5 col-md-7">
+						<table class="table table-hover">
+							<thead>
+								<tr>
+									<th scope="col">Id</th>
+									<th scope="col">Name</th>
+									<th scope="col">Author</th>
+									<th scope="col">Price</th>
+									<th scope="col">Action</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="b:${mybooks}">
+								<!--	<th scope="row"></th>-->
+									<td th:text=${b.id}></td>
+									<td th:text=${b.bookName}></td>
+									<td th:text=${b.author}></td>
+									<td th:text=${b.price}></td>
+									<td><a style="color: red;" th:href="@{/deleteMyList/{id}(id=${b.id})}"><i class="fa-solid fa-trash"></i></a></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"/>
+				</body>
+			</html>
